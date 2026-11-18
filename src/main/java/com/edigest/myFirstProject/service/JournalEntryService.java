@@ -2,11 +2,15 @@ package com.edigest.myFirstProject.service;
 
 import com.edigest.myFirstProject.entity.JournalEntry;
 import com.edigest.myFirstProject.repository.JournalEntryRepository;
+import org.bson.types.ObjectId;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
+import java.util.Optional;
 
 //@Component
 @Service
@@ -42,4 +46,15 @@ public class JournalEntryService {
         return savedEntry;
     }
 
+    public List<JournalEntry> getAll() {
+        return journalEntryRepository.findAll();
+    }
+
+    public Optional<JournalEntry> getJournalEntryById(ObjectId myId) {
+        return journalEntryRepository.findById(myId);
+    }
+
+    public void deleteJournalEntryById(ObjectId myId) {
+        journalEntryRepository.deleteById(myId);
+    }
 }

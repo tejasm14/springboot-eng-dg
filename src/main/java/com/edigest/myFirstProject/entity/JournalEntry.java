@@ -1,24 +1,26 @@
 package com.edigest.myFirstProject.entity;
 
+import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Document(collection = "journal_entries")
 public class JournalEntry {
 
     @Id
-    private String journalId;
+    private ObjectId journalId;
     private String title;
     private String content;
-    private Date date;
+    private LocalDateTime date;
 
-    public String getJournalId() {
+    public ObjectId getJournalId() {
         return journalId;
     }
 
-    public void setJournalId(String journalId) {
+    public void setJournalId(ObjectId journalId) {
         this.journalId = journalId;
     }
 
@@ -38,11 +40,11 @@ public class JournalEntry {
         this.title = title;
     }
 
-    public Date getDate() {
+    public LocalDateTime getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDateTime date) {
         this.date = date;
     }
 }
